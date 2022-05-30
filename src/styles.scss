@@ -1,0 +1,57 @@
+@use "./colors";
+@use "./mixins";
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;900&display=swap");
+
+// Base styles
+
+body {
+  margin: 0;
+  background-color: colors.$stone-cold;
+}
+
+// Typography
+
+.typography {
+  &-button {
+    @include mixins.typography-button;
+  }
+
+  &-button-semibold {
+    @include mixins.typography-button-semibold;
+  }
+
+  &-body {
+    @include mixins.typography-body;
+  }
+
+  &-body-semibold {
+    @include mixins.typography-body-semibold;
+  }
+
+  &-heading {
+    @include mixins.typography-heading;
+  }
+}
+
+// Buttons
+
+.button {
+  @include mixins.typography-button;
+  @include mixins.button-basic;
+
+  &--small {
+    padding: 12px 18px;
+  }
+
+  &--primary {
+    color: colors.$white;
+    background-color: colors.$festive-fennec;
+  }
+
+  &--tertiary {
+    @include mixins.typography-button-semibold;
+
+    color: colors.$festive-fennec;
+    background-color: colors.$stone-cold;
+  }
+}

@@ -1,7 +1,14 @@
 import React from 'react';
 
+import { ErrorBoundary } from 'core';
+import { HomePage } from 'pages/Home';
+
 function App() {
-  return <h1 className="hello-world">Hello, World!</h1>;
+  return (
+    <ErrorBoundary>
+      <HomePage />
+    </ErrorBoundary>
+  );
 }
 
 export default App;
