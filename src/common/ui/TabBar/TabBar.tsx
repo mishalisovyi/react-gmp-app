@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { Tab } from 'common/ui';
 import styles from './TabBar.module.scss';
 
@@ -13,15 +13,19 @@ export function TabBar({ tabsLabels }: TabBarProps) {
     setActiveTabIndex(tabIndex);
   };
 
+  const memoizedHandleTabClick = useCallback((tabIndex: number) => {
+    return () => handleTabClick(tabIndex);
+  }, []);
+
   return (
     <div className={styles['TabBar']}>
       {tabsLabels.map((label, index) => {
         return (
           <Tab
             label={label}
-            key={`${label}_${index}`}
+            key={label}
             isActive={index === activeTabIndex}
-            onClick={() => handleTabClick(index)}
+            onClick={memoizedHandleTabClick(index)}
           />
         );
       })}
