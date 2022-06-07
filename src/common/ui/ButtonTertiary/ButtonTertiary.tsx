@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { memo, MouseEventHandler } from 'react';
 
 interface ButtonTertiaryProps {
   text: string;
+  onClick?: MouseEventHandler<HTMLButtonElement>;
 }
 
-export function ButtonTertiary({ text }: ButtonTertiaryProps) {
-  return <button type="button" className="button button--small button--tertiary">{text}</button>;
+function ButtonTertiaryComponent({ text, onClick }: ButtonTertiaryProps) {
+  return <button type="button" className="button button--small button--tertiary" onClick={onClick}>{text}</button>;
 }
+
+ButtonTertiaryComponent.defaultProps = {
+  onClick: () => { },
+};
+
+export const ButtonTertiary = memo(ButtonTertiaryComponent);

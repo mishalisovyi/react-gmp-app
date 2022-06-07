@@ -48,10 +48,82 @@ body {
     background-color: colors.$festive-fennec;
   }
 
+  &--secondary {
+    color: colors.$festive-fennec;
+    background-color: colors.$young-night;
+    border: solid 1.5px colors.$festive-fennec;
+  }
+
   &--tertiary {
     @include mixins.typography-button-semibold;
 
     color: colors.$festive-fennec;
     background-color: colors.$stone-cold;
   }
+
+  &--transparent {
+    padding: 0;
+    color: colors.$white;
+    background-color: unset;
+  }
+
+  &--menu {
+    border-radius: 50%;
+    color: colors.$white;
+    background-color: colors.$young-night;
+    padding: 8px 17px 6px;
+  }
+}
+
+// Forms
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  row-gap: 12px;
+
+  &__label {
+    @include mixins.typography-button-small-semibold;
+
+    color: colors.$festive-fennec;
+  }
+
+  &__control {
+    @include mixins.typography-body;
+
+    padding: 8px 12px;
+    box-sizing: border-box;
+    background-color: colors.$black-panther;
+    border: none;
+    border-radius: 4px;
+  }
+
+  &__control:not(textarea) {
+    height: 42px;
+  }
+
+  &__validation-message {
+    @include mixins.typography-subtitle-small;
+    @extend .u-hidden;
+
+    color: colors.$festive-fennec;
+  }
+
+  &--has-error {
+    .form-group {
+      &__control {
+        border: solid 1px colors.$festive-fennec;
+      }
+
+      &__validation-message {
+        visibility: visible;
+      }
+    }
+  }
+}
+
+// Utility
+
+.u-hidden {
+  visibility: hidden;
 }

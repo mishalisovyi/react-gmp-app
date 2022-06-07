@@ -1,4 +1,4 @@
-import React, { MouseEventHandler } from 'react';
+import React, { memo, MouseEventHandler } from 'react';
 import { EnumerableComponentProps } from 'common/interfaces';
 import styles from './Tab.module.scss';
 
@@ -8,8 +8,10 @@ interface TabProps extends EnumerableComponentProps {
   onClick: MouseEventHandler<HTMLDivElement>;
 }
 
-export function Tab({ label, isActive, onClick }: TabProps) {
+function TabComponent({ label, isActive, onClick }: TabProps) {
   const activeTabClass = isActive ? styles['Tab--active'] : '';
 
   return <div className={`${styles['Tab']} ${activeTabClass}`} onClick={onClick}>{label}</div>;
 }
+
+export const Tab = memo(TabComponent);

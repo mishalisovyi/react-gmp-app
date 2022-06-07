@@ -1,16 +1,29 @@
-import React from 'react';
-import { Divider, TabBar } from 'common/ui';
+import React, { memo } from 'react';
+
+import { Divider, FilterSelectList, TabBar } from 'common/ui';
+import { MOVIES_SORTING_SELECT_DATA, MOVIES_TABS_LABELS } from 'entities/movie/constants';
+
 import styles from './MoviesFilterPanel.module.scss';
 
-const tabsLabels = ['All', 'Documentary', 'Comedy', 'Horror', 'Crime'];
+interface MoviesFilterPanelProps {
+  defaultSortField: string;
+  onSort: (selectedValue: string) => void
+}
 
-export function MoviesFilterPanel() {
+function MoviesFilterPanelComponent({ defaultSortField, onSort }: MoviesFilterPanelProps) {
+  const handleSelectionChanged = (selectedValue: string) => {
+    onSort(selectedValue);
+  };
+
   return (
     <>
       <div className={styles['MoviesFilterPanel']}>
-        <TabBar tabsLabels={tabsLabels} />
+        <TabBar tabsLabels={MOVIES_TABS_LABELS} />
+        <FilterSelectList label="Sort by" data={MOVIES_SORTING_SELECT_DATA} defaultValue={defaultSortField} onSelectionChanged={handleSelectionChanged} />
       </div>
       <Divider />
     </>
   );
 }
+
+export const MoviesFilterPanel = memo(MoviesFilterPanelComponent);

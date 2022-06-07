@@ -15,7 +15,7 @@
 }
 
 @mixin -typography-body-basic {
-  font-size: 20px;
+  font-size: 18px;
   color: colors.$white;
 }
 
@@ -58,25 +58,31 @@
 @mixin typography-button {
   @include -typography-button-basic;
   @include font-montserrat-medium;
-  font-size: 20px;
+  font-size: 18px;
 }
 
 @mixin typography-button-semibold {
   @include -typography-button-basic;
   @include font-montserrat-semibold;
-  font-size: 20px;
+  font-size: 18px;
 }
 
 @mixin typography-button-small {
   @include -typography-button-basic;
   @include font-montserrat-medium;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 @mixin typography-button-small-lightened {
   @include -typography-button-basic;
   @include font-montserrat-regular;
-  font-size: 16px;
+  font-size: 14px;
+}
+
+@mixin typography-button-small-semibold {
+  @include -typography-button-basic;
+  @include font-montserrat-semibold;
+  font-size: 14px;
 }
 
 @mixin typography-body {
@@ -91,11 +97,16 @@
 
 @mixin typography-subtitle {
   @include -typography-subtitle-basic;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 @mixin typography-subtitle-small {
   @include -typography-subtitle-basic;
+  font-size: 12px;
+}
+
+@mixin typography-menu {
+  @include font-montserrat-medium;
   font-size: 14px;
 }
 
@@ -103,7 +114,7 @@
   @include font-montserrat-light;
 
   color: colors.$white;
-  font-size: 40px;
+  font-size: 32px;
   letter-spacing: 1px;
   text-transform: uppercase;
   margin: 0 0 36px;

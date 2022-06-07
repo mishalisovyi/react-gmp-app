@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { memo } from 'react';
 import styles from './Logo.module.scss';
 
-export function Logo() {
+function LogoComponent() {
   return (
     <div className={styles['Logo']}>
       <span className={styles['Logo__bold-part']}>netflix</span>
@@ -9,3 +9,5 @@ export function Logo() {
     </div>
   );
 }
+
+export const Logo = memo(LogoComponent);
