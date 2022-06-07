@@ -1,0 +1,38 @@
+@use '../../../../mixins';
+
+.MovieCard {
+  display: flex;
+  flex-direction: column;
+  row-gap: 24px;
+
+  &__poster {
+    width: 320px;
+    height: 450px;
+  }
+
+  &__info {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    .info {
+      &__summary {
+        display: flex;
+        flex-direction: column;
+        row-gap: 8px;
+      }
+
+      &__title {
+        @include mixins.typography-subtitle;
+
+        opacity: .7;
+      }
+
+      &__tagline {
+        @include mixins.typography-subtitle-small;
+
+        opacity: .5;
+      }
+    }
+  }
+}

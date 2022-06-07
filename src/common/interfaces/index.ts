@@ -1,0 +1,1 @@
+export { EnumerableComponentProps } from './EnumerableComponentProps';
