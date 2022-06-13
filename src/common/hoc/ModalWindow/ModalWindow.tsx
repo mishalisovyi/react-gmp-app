@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 
+import { Icon } from 'common/constants';
+import { ButtonType } from 'common/enums';
 import { ModalWindowProps } from 'common/interfaces';
 import { withPortalRendering } from 'common/hoc';
-import { ButtonPrimary, ButtonSecondary, ButtonTransparent } from 'common/ui';
+import { Button } from 'common/ui';
 
 import styles from './ModalWindow.module.scss';
 
@@ -19,19 +21,36 @@ function ModalWindowComponent({
   onClose,
   children,
 }: ModalWindowProps) {
-  const primaryButtonElement = primaryButton.show
-    ? <ButtonPrimary text={primaryButton.text} onClick={primaryButton.onClick} />
-    : null;
-  const secondaryButtonElement = secondaryButton.show
-    ? <ButtonSecondary text={secondaryButton.text} onClick={secondaryButton.onClick} />
-    : null;
+  const primaryButtonElement = useMemo(() => {
+    return primaryButton.show
+      ? (
+        <Button
+          type={ButtonType.Primary}
+          text={primaryButton.text}
+          onClick={primaryButton.onClick}
+        />
+      )
+      : null;
+  }, [primaryButton.show, primaryButton.text, primaryButton.onClick]);
+
+  const secondaryButtonElement = useMemo(() => {
+    return secondaryButton.show
+      ? (
+        <Button
+          type={ButtonType.Secondary}
+          text={secondaryButton.text}
+          onClick={secondaryButton.onClick}
+        />
+      )
+      : null;
+  }, [secondaryButton.show, secondaryButton.text, secondaryButton.onClick]);
 
   return (
     <div className={styles['ModalWindow__container']}>
       <div className={styles['ModalWindow__backdrop']} />
       <div className={styles['ModalWindow__window']}>
         <div className={styles['window__close-button-wrapper']}>
-          <ButtonTransparent text="&#10005;" onClick={onClose} />
+          <Button type={ButtonType.Transparent} text={Icon.MULTIPLICATION_X} onClick={onClose} />
         </div>
         <header className={styles['window__title']}>{title}</header>
         <div className={styles['window__body']}>{children}</div>

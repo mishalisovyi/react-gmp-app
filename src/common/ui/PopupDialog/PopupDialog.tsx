@@ -1,4 +1,4 @@
-import React, { MouseEventHandler } from 'react';
+import React, { MouseEventHandler, useMemo } from 'react';
 
 import { ModalWindow } from 'common/hoc';
 import { ModalWindowActionButtonProps } from 'common/interfaces';
@@ -18,16 +18,17 @@ export function PopupDialog({
   onSecondaryButtonClick,
   onClose,
 }: PopupDialogProps) {
-  const primaryButtonAttributes: ModalWindowActionButtonProps = {
+  const primaryButtonAttributes: ModalWindowActionButtonProps = useMemo(() => ({
     show: true,
     text: 'Submit',
     onClick: onPrimaryButtonClick,
-  };
-  const secondaryButtonAttributes: ModalWindowActionButtonProps = {
+  }), [onPrimaryButtonClick]);
+
+  const secondaryButtonAttributes: ModalWindowActionButtonProps = useMemo(() => ({
     show: true,
     text: 'Reset',
     onClick: onSecondaryButtonClick,
-  };
+  }), [onSecondaryButtonClick]);
 
   return (
     <ModalWindow

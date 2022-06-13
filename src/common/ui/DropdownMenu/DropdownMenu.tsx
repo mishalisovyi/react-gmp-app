@@ -1,7 +1,10 @@
 import React, { useCallback, useState } from 'react';
 import memoize from 'fast-memoize';
 
-import { ButtonTransparent } from 'common/ui';
+import { Icon } from 'common/constants';
+import { ButtonType } from 'common/enums';
+import { Button } from 'common/ui';
+
 import styles from './DropdownMenu.module.scss';
 
 interface DropdownMenuProps {
@@ -37,7 +40,11 @@ export function DropdownMenu({ children, items, onOptionClicked }: DropdownMenuP
       {isOpened && (
         <div className={styles['DropdownMenu']}>
           <div className={styles['DropdownMenu__close-button']}>
-            <ButtonTransparent text="&#10005;" onClick={handleCloseButtonClick} />
+            <Button
+              type={ButtonType.Transparent}
+              text={Icon.MULTIPLICATION_X}
+              onClick={handleCloseButtonClick}
+            />
           </div>
           {items.map((item) => <div className={styles['DropdownMenu__item']} onClick={handleMenuOptionClick(item)} key={item}>{item}</div>)}
         </div>

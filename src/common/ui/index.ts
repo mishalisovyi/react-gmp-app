@@ -1,8 +1,4 @@
-export { ButtonMenu } from './ButtonMenu/ButtonMenu';
-export { ButtonPrimary } from './ButtonPrimary/ButtonPrimary';
-export { ButtonSecondary } from './ButtonSecondary/ButtonSecondary';
-export { ButtonTertiary } from './ButtonTertiary/ButtonTertiary';
-export { ButtonTransparent } from './ButtonTransparent/ButtonTransparent';
+export { Button } from './Button/Button';
 export { Divider } from './Divider/Divider';
 export { DropdownMenu } from './DropdownMenu/DropdownMenu';
 export { FilterSelectList } from './FilterSelectList/FilterSelectList';

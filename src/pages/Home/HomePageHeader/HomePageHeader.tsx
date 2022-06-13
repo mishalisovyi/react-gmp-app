@@ -1,6 +1,7 @@
 import React, { useCallback, useState } from 'react';
 
-import { ButtonTertiary, Logo, SearchPanel } from 'common/ui';
+import { ButtonType } from 'common/enums';
+import { Button, Logo, SearchPanel } from 'common/ui';
 import { MovieFormPopup } from 'entities/movie/components';
 
 import styles from './HomePageHeader.module.scss';
@@ -22,7 +23,7 @@ export function HomePageHeader() {
         <div className={styles['HomePageHeader']}>
           <div className={styles['HomePageHeader__head']}>
             <Logo />
-            <ButtonTertiary text="+ ADD MOVIE" onClick={handleAddMovieButtonClick} />
+            <Button type={ButtonType.Tertiary} text="+ ADD MOVIE" onClick={handleAddMovieButtonClick} />
           </div>
 
           <div className={styles['HomePageHeader__body']}>

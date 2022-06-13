@@ -1,5 +1,6 @@
 import React, { ChangeEvent } from 'react';
-import { SelectListData, SelectListValue } from 'common/interfaces';
+import { SelectListData, SelectListValue, SelectOptionDataItem } from 'common/interfaces';
+
 import styles from './FilterSelectList.module.scss';
 
 interface FilterSelectListProps {
@@ -24,8 +25,8 @@ export function FilterSelectList({
       <label className={styles['FilterSelectList__label']}>{label}</label>
 
       <select className={styles['FilterSelectList__control']} defaultValue={defaultValue} onChange={onSelectValueChanged}>
-        {data.items.map((item) => {
-          return <option className={styles['control__option']} key={item.value} value={item.value}>{item.title}</option>;
+        {data.items.map((item: SelectOptionDataItem) => {
+          return <option className={styles['control__option']} key={`${item.title}_${item.value}`} value={item.value}>{item.title}</option>;
         })}
       </select>
     </div>

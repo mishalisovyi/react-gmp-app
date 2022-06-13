@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import { Icon } from 'common/constants';
+import { ButtonType } from 'common/enums';
 import { EnumerableComponentProps } from 'common/interfaces';
 import { MovieFormPopup } from 'entities/movie/components';
 import { DELETE_MOVIE_POPUP_CONFIRMATION_MESSAGE, DELETE_MOVIE_POPUP_CONFIRMATION_TITLE, MOVIE_MENU_ITEMS } from 'entities/movie/constants';
@@ -7,7 +9,7 @@ import { MovieMenuItems } from 'entities/movie/enums';
 import { Movie } from 'entities/movie/interfaces';
 
 import {
-  ButtonMenu, DropdownMenu, Label, PopupConfirmation,
+  Button, DropdownMenu, Label, PopupConfirmation,
 } from 'common/ui';
 
 import styles from './MovieCard.module.scss';
@@ -60,7 +62,7 @@ export function MovieCard({ movie }: MovieCardProps) {
       <div className={styles['MovieCard']} onMouseEnter={handleMovieCardMouseEnter} onMouseLeave={handleMovieCardMouseLeave}>
         <div className={styles['MovieCard__menu']}>
           <DropdownMenu items={MOVIE_MENU_ITEMS} onOptionClicked={handleMenuOptionClick}>
-            {showMenuButton && <ButtonMenu />}
+            {showMenuButton && <Button type={ButtonType.Menu} text={Icon.VERTICAL_ELLIPSIS} />}
           </DropdownMenu>
         </div>
 
