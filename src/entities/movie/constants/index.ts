@@ -1,4 +1,4 @@
-import { SelectListData } from 'common/interfaces';
+import { SelectListData, TabsData } from 'common/interfaces';
 import { MovieMenuItems } from 'entities/movie/enums';
 import { Movie } from 'entities/movie/interfaces';
 
@@ -149,6 +149,8 @@ export const MOVIES_DATA: Movie[] = [{
   runtime: 130,
 }];
 
+export const MOVIES_GENRES = ['Action', 'Adventure', 'Animation', 'Comedy', 'Drama', 'Family', 'Fantasy', 'Romance', 'Science Fiction'];
+
 // Popups
 
 export const DELETE_MOVIE_POPUP_CONFIRMATION_TITLE = 'Delete movie';
@@ -156,7 +158,10 @@ export const DELETE_MOVIE_POPUP_CONFIRMATION_MESSAGE = 'Are you sure you want to
 
 // Tabs
 
-export const MOVIES_TABS_LABELS = ['All', 'Documentary', 'Comedy', 'Horror', 'Crime'];
+export const MOVIES_TABS_DATA: TabsData = {
+  defaultValue: 'All',
+  items: ['All', 'Action', 'Adventure', 'Animation', 'Comedy', 'Drama', 'Family', 'Fantasy', 'Romance', 'Science Fiction'],
+};
 
 // Sorting
 

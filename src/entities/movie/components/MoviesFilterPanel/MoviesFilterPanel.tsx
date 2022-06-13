@@ -1,25 +1,36 @@
 import React, { memo } from 'react';
 
 import { Divider, FilterSelectList, TabBar } from 'common/ui';
-import { MOVIES_SORTING_SELECT_DATA, MOVIES_TABS_LABELS } from 'entities/movie/constants';
+import { MOVIES_SORTING_SELECT_DATA, MOVIES_TABS_DATA } from 'entities/movie/constants';
 
 import styles from './MoviesFilterPanel.module.scss';
 
 interface MoviesFilterPanelProps {
-  defaultSortField: string;
-  onSort: (selectedValue: string) => void
+  onSortingPerformed: (selectedValue: string) => void;
+  onGenreFilterApplied: (tabLabel: string) => void;
 }
 
-function MoviesFilterPanelComponent({ defaultSortField, onSort }: MoviesFilterPanelProps) {
-  const handleSelectionChanged = (selectedValue: string) => {
-    onSort(selectedValue);
+function MoviesFilterPanelComponent({
+  onGenreFilterApplied,
+  onSortingPerformed,
+}: MoviesFilterPanelProps) {
+  const handleActiveTabChange = (tabLabel: string) => {
+    onGenreFilterApplied(tabLabel);
+  };
+
+  const handleFilterSelectionChange = (selectedValue: string) => {
+    onSortingPerformed(selectedValue);
   };
 
   return (
     <>
       <div className={styles['MoviesFilterPanel']}>
-        <TabBar tabsLabels={MOVIES_TABS_LABELS} />
-        <FilterSelectList label="Sort by" data={MOVIES_SORTING_SELECT_DATA} defaultValue={defaultSortField} onSelectionChanged={handleSelectionChanged} />
+        <TabBar
+          tabs={MOVIES_TABS_DATA.items}
+          defaultActiveTab={MOVIES_TABS_DATA.defaultValue}
+          onActiveTabChanged={handleActiveTabChange}
+        />
+        <FilterSelectList label="Sort by" options={MOVIES_SORTING_SELECT_DATA.items} defaultValue={MOVIES_SORTING_SELECT_DATA.defaultValue} onSelectionChanged={handleFilterSelectionChange} />
       </div>
       <Divider />
     </>

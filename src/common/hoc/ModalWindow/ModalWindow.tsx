@@ -52,7 +52,7 @@ function ModalWindowComponent({
         <div className={styles['window__close-button-wrapper']}>
           <Button type={ButtonType.Transparent} text={Icon.MULTIPLICATION_X} onClick={onClose} />
         </div>
-        <header className={styles['window__title']}>{title}</header>
+        {title && <header className={styles['window__title']}>{title}</header>}
         <div className={styles['window__body']}>{children}</div>
         <div className={styles['window__action-buttons']}>
           {secondaryButtonElement}

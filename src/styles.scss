@@ -73,6 +73,14 @@ body {
     background-color: colors.$young-night;
     padding: 8px 17px 6px;
   }
+
+  &--search {
+    padding: 0;
+    border: none;
+    background-color: unset;
+    color: colors.$festive-fennec;
+    font-size: 36px;
+  }
 }
 
 // Forms

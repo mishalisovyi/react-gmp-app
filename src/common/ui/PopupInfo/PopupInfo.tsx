@@ -1,14 +1,23 @@
-import React from 'react';
+import React, { MouseEventHandler } from 'react';
 
 import { ModalWindow } from 'common/hoc';
-import { ModalWindowProps } from 'common/interfaces';
 
-type PopupInfoProps = Omit<ModalWindowProps, 'primaryButton' | 'secondaryButton'>;
+import styles from './PopupInfo.module.scss';
 
-export function PopupInfo({ children, onClose }: PopupInfoProps) {
+interface PopupInfoProps {
+  title: string;
+  message: string;
+  onClose: MouseEventHandler<HTMLButtonElement>;
+}
+
+export function PopupInfo({ title, message, onClose }: PopupInfoProps) {
   return (
     <ModalWindow onClose={onClose}>
-      {children}
+      <div className={styles['PopupInfo']}>
+        <div className={styles['PopupInfo__check-mark']}>&#10003;</div>
+        <h1 className="typography-heading">{title}</h1>
+        <p className="typography-body">{message}</p>
+      </div>
     </ModalWindow>
   );
 }

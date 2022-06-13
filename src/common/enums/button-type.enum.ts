@@ -4,4 +4,5 @@ export enum ButtonType {
   Tertiary,
   Menu,
   Transparent,
+  Search,
 }

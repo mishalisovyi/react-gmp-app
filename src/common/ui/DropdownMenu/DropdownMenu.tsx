@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { memo, useCallback, useState } from 'react';
 import memoize from 'fast-memoize';
 
 import { Icon } from 'common/constants';
@@ -13,21 +13,27 @@ interface DropdownMenuProps {
   onOptionClicked: (option: string) => void;
 }
 
-export function DropdownMenu({ children, items, onOptionClicked }: DropdownMenuProps) {
+function DropdownMenuComponent({ children, items, onOptionClicked }: DropdownMenuProps) {
   const [isOpened, setIsOpened] = useState(false);
 
-  const handleMenuTargetClick = () => {
+  const handleMenuTargetClick = (event: React.MouseEvent<HTMLDivElement>) => {
+    event.stopPropagation();
+
     setIsOpened(true);
   };
 
   const handleMenuOptionClick = useCallback(memoize((option: string) => {
-    return () => {
+    return (event: React.MouseEvent<HTMLDivElement>) => {
+      event.stopPropagation();
+
       setIsOpened(false);
       onOptionClicked(option);
     };
   }), []);
 
-  const handleCloseButtonClick = () => {
+  const handleCloseButtonClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.stopPropagation();
+
     setIsOpened(false);
   };
 
@@ -52,3 +58,5 @@ export function DropdownMenu({ children, items, onOptionClicked }: DropdownMenuP
     </>
   );
 }
+
+export const DropdownMenu = memo(DropdownMenuComponent);
