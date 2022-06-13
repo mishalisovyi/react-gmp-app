@@ -25,11 +25,13 @@
     "arrow-body-style": 0,
     "import/prefer-default-export": 0,
     "jsx-a11y/click-events-have-key-events": 0,
+    "jsx-a11y/label-has-associated-control": 0,
     "jsx-a11y/no-static-element-interactions": 0,
     "linebreak-style": 0,
     "react/destructuring-assignment": 0,
     "react/no-array-index-key": 0,
     "react/no-unused-prop-types": 0,
+    "react/jsx-props-no-spreading": 0,
     "@typescript-eslint/dot-notation": 0
   }
 }

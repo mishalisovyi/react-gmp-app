@@ -1,9 +1,19 @@
 @use '../../../../mixins';
 
 .MovieCard {
-  display: flex;
-  flex-direction: column;
-  row-gap: 24px;
+  position: relative;
+
+  &__menu {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 24px;
+  }
 
   &__poster {
     width: 320px;

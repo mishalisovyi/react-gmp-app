@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 import { MovieCard } from 'entities/movie/components';
 import { Movie } from 'entities/movie/interfaces';
@@ -9,7 +9,7 @@ interface MoviesDashboardProps {
   movies: Movie[]
 }
 
-export function MoviesDashboard({ movies }: MoviesDashboardProps) {
+function MoviesDashboardComponent({ movies }: MoviesDashboardProps) {
   return (
     <>
       <div className={styles['MoviesDashboard__items-number-title']}>
@@ -22,3 +22,5 @@ export function MoviesDashboard({ movies }: MoviesDashboardProps) {
     </>
   );
 }
+
+export const MoviesDashboard = memo(MoviesDashboardComponent);

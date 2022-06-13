@@ -1,4 +1,10 @@
-export const MOVIES_DATA = [{
+import { SelectListData } from 'common/interfaces';
+import { MovieMenuItems } from 'entities/movie/enums';
+import { Movie } from 'entities/movie/interfaces';
+
+// Business logic data
+
+export const MOVIES_DATA: Movie[] = [{
   id: 337167,
   title: 'Fifty Shades Freed',
   tagline: "Don't miss the climax",
@@ -142,3 +148,44 @@ export const MOVIES_DATA = [{
   ],
   runtime: 130,
 }];
+
+// Popups
+
+export const DELETE_MOVIE_POPUP_CONFIRMATION_TITLE = 'Delete movie';
+export const DELETE_MOVIE_POPUP_CONFIRMATION_MESSAGE = 'Are you sure you want to delete this movie?';
+
+// Tabs
+
+export const MOVIES_TABS_LABELS = ['All', 'Documentary', 'Comedy', 'Horror', 'Crime'];
+
+// Sorting
+
+export const MOVIES_SORTING_SELECT_DATA: SelectListData = {
+  defaultValue: 'release_date',
+  items: [{
+    title: 'Title',
+    value: 'title',
+  }, {
+    title: 'Vote average',
+    value: 'vote_average',
+  }, {
+    title: 'Vote count',
+    value: 'vote_count',
+  }, {
+    title: 'Release date',
+    value: 'release_date',
+  }, {
+    title: 'Budget',
+    value: 'budget',
+  }, {
+    title: 'Revenue',
+    value: 'revenue',
+  }, {
+    title: 'Runtime',
+    value: 'runtime',
+  }],
+};
+
+// Menu
+
+export const MOVIE_MENU_ITEMS = [MovieMenuItems.Edit, MovieMenuItems.Delete];

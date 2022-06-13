@@ -1,20 +1,38 @@
-import React from 'react';
-import { ButtonTertiary, Logo, SearchPanel } from 'common/ui';
+import React, { useCallback, useState } from 'react';
+
+import { ButtonType } from 'common/enums';
+import { Button, Logo, SearchPanel } from 'common/ui';
+import { MovieFormPopup } from 'entities/movie/components';
+
 import styles from './HomePageHeader.module.scss';
 
 export function HomePageHeader() {
-  return (
-    <header>
-      <div className={styles['HomePageHeader']}>
-        <div className={styles['HomePageHeader__head']}>
-          <Logo />
-          <ButtonTertiary text="+ ADD MOVIE" />
-        </div>
+  const [showAddMoviePopupDialog, setShowAddMoviePopupDialog] = useState(false);
 
-        <div className={styles['HomePageHeader__body']}>
-          <SearchPanel labelText="Find your movie" />
+  const handleAddMovieButtonClick = useCallback(() => {
+    setShowAddMoviePopupDialog(true);
+  }, []);
+
+  const handleMovieFormPopupClosing = () => {
+    setShowAddMoviePopupDialog(false);
+  };
+
+  return (
+    <>
+      <header>
+        <div className={styles['HomePageHeader']}>
+          <div className={styles['HomePageHeader__head']}>
+            <Logo />
+            <Button type={ButtonType.Tertiary} text="+ ADD MOVIE" onClick={handleAddMovieButtonClick} />
+          </div>
+
+          <div className={styles['HomePageHeader__body']}>
+            <SearchPanel labelText="Find your movie" />
+          </div>
         </div>
-      </div>
-    </header>
+      </header>
+
+      {showAddMoviePopupDialog && <MovieFormPopup onClose={handleMovieFormPopupClosing} />}
+    </>
   );
 }
