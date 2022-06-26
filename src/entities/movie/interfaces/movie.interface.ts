@@ -12,3 +12,5 @@ export interface Movie {
   genres: string[];
   runtime: number;
 }
+
+export type MovieData = Omit<Movie, 'id'>;

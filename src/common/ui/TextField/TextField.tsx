@@ -1,16 +1,21 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
+import { ComponentWithRefProps } from 'common/interfaces';
 import styles from './TextField.module.scss';
 
-interface TextFieldProps {
+interface TextFieldProps extends ComponentWithRefProps {
   placeholder?: string,
 }
 
-export function TextField({ placeholder }: TextFieldProps) {
-  return (
-    <input type="text" placeholder={placeholder} className={styles['TextField']} />
-  );
-}
+const TextField = forwardRef(
+  ({ placeholder }: TextFieldProps, ref: React.ForwardedRef<HTMLInputElement>) => {
+    return (
+      <input type="text" ref={ref} placeholder={placeholder} className={styles['TextField']} />
+    );
+  },
+);
 
 TextField.defaultProps = {
   placeholder: '',
 };
+
+export { TextField };

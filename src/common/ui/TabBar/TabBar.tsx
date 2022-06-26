@@ -1,31 +1,38 @@
 import React, { memo, useCallback, useState } from 'react';
-import memoize from 'fast-memoize';
 
 import { Tab } from 'common/ui';
 import styles from './TabBar.module.scss';
 
 interface TabBarProps {
-  tabsLabels: string[]
+  tabs: string[];
+  defaultActiveTab: string;
+  onActiveTabChanged: (tabLabel: string) => void;
 }
 
-function TabBarComponent({ tabsLabels }: TabBarProps) {
-  const [activeTabIndex, setActiveTabIndex] = useState(0);
+const getDefaultActiveTabIndex = (tabs: string[], defaultActiveTabLabel: string) => {
+  return tabs.findIndex((item) => item === defaultActiveTabLabel);
+};
 
-  const handleTabClick = useCallback(memoize((tabIndex: number) => {
-    return () => {
-      setActiveTabIndex(tabIndex);
-    };
-  }), []);
+function TabBarComponent({ tabs, defaultActiveTab, onActiveTabChanged }: TabBarProps) {
+  const [activeTabIndex, setActiveTabIndex] = useState(
+    getDefaultActiveTabIndex(tabs, defaultActiveTab),
+  );
+
+  const handleTabClick = useCallback((tabIndex: number, tabLabel: string) => {
+    setActiveTabIndex(tabIndex);
+    onActiveTabChanged(tabLabel);
+  }, []);
 
   return (
     <div className={styles['TabBar']}>
-      {tabsLabels.map((label, index) => {
+      {tabs.map((label, index) => {
         return (
           <Tab
             label={label}
             key={label}
+            index={index}
             isActive={index === activeTabIndex}
-            onClick={handleTabClick(index)}
+            onClick={handleTabClick}
           />
         );
       })}

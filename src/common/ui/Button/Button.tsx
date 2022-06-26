@@ -1,4 +1,4 @@
-import React, { MouseEventHandler, useMemo } from 'react';
+import React, { memo, MouseEventHandler, useMemo } from 'react';
 
 import { ButtonType } from 'common/enums';
 
@@ -15,15 +15,18 @@ const getCssClassesByButtonType = (type: ButtonType): string => {
     [ButtonType.Tertiary]: 'button--small button--tertiary',
     [ButtonType.Menu]: 'button--menu',
     [ButtonType.Transparent]: 'button--transparent',
+    [ButtonType.Search]: 'button--search',
   }[type];
 };
 
-export function Button({ onClick, type, text }: ButtonProps) {
+function ButtonComponent({ onClick, type, text }: ButtonProps) {
   const buttonClasses = useMemo(() => getCssClassesByButtonType(type), [type]);
 
   return <button type="button" className={`button ${buttonClasses}`} onClick={onClick}>{text}</button>;
 }
 
-Button.defaultProps = {
+ButtonComponent.defaultProps = {
   onClick: () => { },
 };
+
+export const Button = memo(ButtonComponent);

@@ -1,1 +1,1 @@
-export { MovieMenuItems } from './MovieMenuItems';
+export { MovieMenuItems } from './movie-menu-items.enum';

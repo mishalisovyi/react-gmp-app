@@ -9,6 +9,7 @@
   min-height: 300px;
   margin-bottom: 10px;
   padding-top: 16px;
+  padding-bottom: 28px;
   background-color: colors.$young-night;
 
   &__head {
@@ -18,9 +19,11 @@
   }
 
   &__body {
-    @include mixins.basic-page-offset;
-
     flex-grow: 1;
-    margin-top: 36px;
+    margin-top: 14px;
+
+    &--offset {
+      @include mixins.basic-page-offset;
+    }
   }
 }

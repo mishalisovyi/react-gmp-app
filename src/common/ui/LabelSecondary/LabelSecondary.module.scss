@@ -1,7 +1,7 @@
 @use '../../../mixins';
 @use '../../../colors';
 
-.Label {
+.LabelSecondary {
   @include mixins.typography-subtitle-small;
 
   padding: 4px 8px;

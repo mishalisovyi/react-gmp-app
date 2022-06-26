@@ -19,6 +19,11 @@
   color: colors.$white;
 }
 
+@mixin -typography-body-large {
+  font-size: 22px;
+  color: colors.$white;
+}
+
 @mixin -typography-subtitle-basic {
   @include font-montserrat-medium;
   color: colors.$white;
@@ -88,6 +93,11 @@
 @mixin typography-body {
   @include -typography-body-basic;
   @include font-montserrat-regular;
+}
+
+@mixin typography-body-large {
+  @include -typography-body-large;
+  @include font-montserrat-light;
 }
 
 @mixin typography-body-semibold {
