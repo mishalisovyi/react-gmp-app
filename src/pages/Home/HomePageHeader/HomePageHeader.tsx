@@ -27,7 +27,7 @@ function HomePageHeaderComponent({ onMoviesSearch }: HomePageHeaderProps) {
   const [showAddMoviePopupDialog, setShowAddMoviePopupDialog] = useState(false);
   const [showMovieAddedPopupInfo, setShowMovieAddedPopupInfo] = useState(false);
 
-  const { movie, setMovie, setMoviesAreOutdatedCounter } = useContext(MovieContext);
+  const { movie, setMovie, requestMoviesLoading } = useContext(MovieContext);
 
   const handleSearchButtonClick = () => {
     setMovie(null);
@@ -47,7 +47,7 @@ function HomePageHeaderComponent({ onMoviesSearch }: HomePageHeaderProps) {
 
   const handleMovieAddedPopupClosing = () => {
     setShowMovieAddedPopupInfo(false);
-    setMoviesAreOutdatedCounter((value) => value + 1);
+    requestMoviesLoading();
   };
 
   const bodyOffsetClass = useMemo(() => {

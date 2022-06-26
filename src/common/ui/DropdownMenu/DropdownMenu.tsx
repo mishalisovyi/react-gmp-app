@@ -1,5 +1,4 @@
 import React, { memo, useCallback, useState } from 'react';
-import memoize from 'fast-memoize';
 
 import { Icon } from 'common/constants';
 import { ButtonType } from 'common/enums';
@@ -22,14 +21,14 @@ function DropdownMenuComponent({ children, items, onOptionClicked }: DropdownMen
     setIsOpened(true);
   };
 
-  const handleMenuOptionClick = useCallback(memoize((option: string) => {
+  const handleMenuOptionClick = useCallback((option: string) => {
     return (event: React.MouseEvent<HTMLDivElement>) => {
       event.stopPropagation();
 
       setIsOpened(false);
       onOptionClicked(option);
     };
-  }), []);
+  }, []);
 
   const handleCloseButtonClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.stopPropagation();

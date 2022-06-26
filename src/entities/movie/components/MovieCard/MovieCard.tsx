@@ -27,7 +27,7 @@ export function MovieCard({ movie }: MovieCardProps) {
   const [showEditMoviePopup, setShowEditMoviePopup] = useState(false);
   const [showDeleteMoviePopup, setShowDeleteMoviePopup] = useState(false);
 
-  const { setMovie, setMoviesAreOutdatedCounter } = useContext(MovieContext);
+  const { setMovie, requestMoviesLoading } = useContext(MovieContext);
 
   // General handlers
 
@@ -59,7 +59,7 @@ export function MovieCard({ movie }: MovieCardProps) {
     setShowEditMoviePopup(false);
 
     if (confirmed) {
-      setMoviesAreOutdatedCounter((value) => value + 1);
+      requestMoviesLoading();
     }
   };
 
@@ -72,7 +72,7 @@ export function MovieCard({ movie }: MovieCardProps) {
 
     await deleteMovie(movie.id);
 
-    setMoviesAreOutdatedCounter((value) => value + 1);
+    requestMoviesLoading();
   };
 
   return (

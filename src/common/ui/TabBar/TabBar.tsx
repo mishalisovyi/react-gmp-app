@@ -1,5 +1,4 @@
 import React, { memo, useCallback, useState } from 'react';
-import memoize from 'fast-memoize';
 
 import { Tab } from 'common/ui';
 import styles from './TabBar.module.scss';
@@ -19,12 +18,10 @@ function TabBarComponent({ tabs, defaultActiveTab, onActiveTabChanged }: TabBarP
     getDefaultActiveTabIndex(tabs, defaultActiveTab),
   );
 
-  const handleTabClick = useCallback(memoize((tabIndex: number, tabLabel: string) => {
-    return () => {
-      setActiveTabIndex(tabIndex);
-      onActiveTabChanged(tabLabel);
-    };
-  }), []);
+  const handleTabClick = useCallback((tabIndex: number, tabLabel: string) => {
+    setActiveTabIndex(tabIndex);
+    onActiveTabChanged(tabLabel);
+  }, []);
 
   return (
     <div className={styles['TabBar']}>
@@ -33,8 +30,9 @@ function TabBarComponent({ tabs, defaultActiveTab, onActiveTabChanged }: TabBarP
           <Tab
             label={label}
             key={label}
+            index={index}
             isActive={index === activeTabIndex}
-            onClick={handleTabClick(index, label)}
+            onClick={handleTabClick}
           />
         );
       })}

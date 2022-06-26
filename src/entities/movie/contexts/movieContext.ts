@@ -6,12 +6,12 @@ interface MovieContextData {
   movie?: Movie | null;
   setMovie: React.Dispatch<React.SetStateAction<Movie | null>>;
   moviesAreOutdatedCounter: number;
-  setMoviesAreOutdatedCounter: React.Dispatch<React.SetStateAction<number>>;
+  requestMoviesLoading: () => void;
 }
 
 export const MovieContext = createContext<MovieContextData>({
   movie: null,
   setMovie: () => { },
   moviesAreOutdatedCounter: 0,
-  setMoviesAreOutdatedCounter: () => { },
+  requestMoviesLoading: () => { },
 });
