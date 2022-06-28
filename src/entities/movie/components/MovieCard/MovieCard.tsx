@@ -1,14 +1,15 @@
-import React, { useCallback, useContext, useState } from 'react';
+import React, { useCallback, useState } from 'react';
+import { useDispatch } from 'react-redux';
 
 import { Icon } from 'common/constants';
 import { ButtonType } from 'common/enums';
 import { EnumerableComponentProps } from 'common/interfaces';
+
 import { MovieFormPopup } from 'entities/movie/components';
 import { DELETE_MOVIE_POPUP_CONFIRMATION_MESSAGE, DELETE_MOVIE_POPUP_CONFIRMATION_TITLE, MOVIE_MENU_ITEMS } from 'entities/movie/constants';
-import { MovieContext } from 'entities/movie/contexts';
 import { MovieMenuItems } from 'entities/movie/enums';
-import { useMovies } from 'entities/movie/hooks';
 import { Movie } from 'entities/movie/interfaces';
+import { requestDeleteMovie, selectMovie } from 'entities/movie/store';
 
 import {
   Button, DropdownMenu, LabelSecondary, PopupConfirmation,
@@ -21,13 +22,11 @@ interface MovieCardProps extends EnumerableComponentProps {
 }
 
 export function MovieCard({ movie }: MovieCardProps) {
-  const { deleteMovie } = useMovies();
+  const dispatch = useDispatch();
 
   const [showMenuButton, setShowMenuButton] = useState(false);
   const [showEditMoviePopup, setShowEditMoviePopup] = useState(false);
   const [showDeleteMoviePopup, setShowDeleteMoviePopup] = useState(false);
-
-  const { setMovie, requestMoviesLoading } = useContext(MovieContext);
 
   // General handlers
 
@@ -40,7 +39,7 @@ export function MovieCard({ movie }: MovieCardProps) {
   };
 
   const handleMovieCardClick = () => {
-    setMovie(movie);
+    dispatch(selectMovie(movie));
   };
 
   // Popups handlers
@@ -55,24 +54,18 @@ export function MovieCard({ movie }: MovieCardProps) {
     }
   }, []);
 
-  const handleEditMoviePopupClosing = ({ confirmed = false } = {}) => {
+  const handleEditMoviePopupClosing = () => {
     setShowEditMoviePopup(false);
-
-    if (confirmed) {
-      requestMoviesLoading();
-    }
   };
 
   const handleDeleteMoviePopupClosing = () => {
     setShowDeleteMoviePopup(false);
   };
 
-  const handleDeleteMoviePopupConfirming = async () => {
+  const handleDeleteMoviePopupConfirming = () => {
     setShowDeleteMoviePopup(false);
 
-    await deleteMovie(movie.id);
-
-    requestMoviesLoading();
+    dispatch(requestDeleteMovie(movie.id));
   };
 
   return (

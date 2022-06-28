@@ -4,6 +4,7 @@ import styles from './Tab.module.scss';
 
 interface TabProps extends EnumerableComponentProps {
   label: string;
+  value: string;
   isActive: boolean;
   index: number;
   onClick: (tabIndex: number, tabLabel: string) => void;
@@ -12,6 +13,7 @@ interface TabProps extends EnumerableComponentProps {
 function TabComponent({
   index,
   label,
+  value,
   isActive,
   onClick,
 }: TabProps) {
@@ -20,7 +22,7 @@ function TabComponent({
   }, [isActive]);
 
   const handleTabClick = () => {
-    onClick(index, label);
+    onClick(index, value);
   };
 
   return <div className={`${styles['Tab']} ${activeTabClass}`} onClick={handleTabClick}>{label}</div>;

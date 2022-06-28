@@ -13,4 +13,4 @@ export interface Movie {
   runtime: number;
 }
 
-export type MovieData = Omit<Movie, 'id'>;
+export type MovieData = { id?: number } & Omit<Movie, 'id'>;

@@ -13,7 +13,9 @@ interface MovieDetailsProps {
 export function MovieDetails({ movie }: MovieDetailsProps) {
   return (
     <article className={styles['MovieDetails']}>
-      <img className={styles['MovieDetails__poster']} src={movie.poster_path} alt={movie.title} />
+      <div className={styles['MovieDetails__poster-wrapper']}>
+        <img className={styles['MovieDetails__poster']} src={movie.poster_path} alt={movie.title} />
+      </div>
 
       <div className={styles['MovieDetails__main-block']}>
         <div className={styles['main-block__header']}>

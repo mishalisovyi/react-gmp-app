@@ -1,10 +1,10 @@
 import React, {
   memo,
   useCallback,
-  useContext,
   useMemo,
   useState,
 } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { Icon } from 'common/constants';
 import { ButtonType } from 'common/enums';
@@ -14,8 +14,11 @@ import {
   PopupInfo,
   SearchPanel,
 } from 'common/ui';
+
+import { State } from 'core';
+
 import { MovieDetails, MovieFormPopup } from 'entities/movie/components';
-import { MovieContext } from 'entities/movie/contexts';
+import { deselectMovie } from 'entities/movie/store';
 
 import styles from './HomePageHeader.module.scss';
 
@@ -24,13 +27,15 @@ interface HomePageHeaderProps {
 }
 
 function HomePageHeaderComponent({ onMoviesSearch }: HomePageHeaderProps) {
+  const dispatch = useDispatch();
+
+  const movie = useSelector((state: State) => state.movies.selectedMovie);
+
   const [showAddMoviePopupDialog, setShowAddMoviePopupDialog] = useState(false);
   const [showMovieAddedPopupInfo, setShowMovieAddedPopupInfo] = useState(false);
 
-  const { movie, setMovie, requestMoviesLoading } = useContext(MovieContext);
-
   const handleSearchButtonClick = () => {
-    setMovie(null);
+    dispatch(deselectMovie());
   };
 
   const handleAddMovieButtonClick = useCallback(() => {
@@ -47,7 +52,6 @@ function HomePageHeaderComponent({ onMoviesSearch }: HomePageHeaderProps) {
 
   const handleMovieAddedPopupClosing = () => {
     setShowMovieAddedPopupInfo(false);
-    requestMoviesLoading();
   };
 
   const bodyOffsetClass = useMemo(() => {

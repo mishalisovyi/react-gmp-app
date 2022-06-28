@@ -9,6 +9,12 @@ body {
   background-color: colors.$stone-cold;
 }
 
+img {
+  @include mixins.typography-body;
+
+  color: colors.$white;
+}
+
 // Typography
 
 .typography {

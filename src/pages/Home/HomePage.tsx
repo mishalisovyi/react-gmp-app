@@ -1,41 +1,26 @@
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { useCallback } from 'react';
+import { useDispatch } from 'react-redux';
 
 import { MoviesContainer } from 'entities/movie/components';
-import { MovieContext } from 'entities/movie/contexts';
-import { Movie } from 'entities/movie/interfaces';
+import { searchMovies } from 'entities/movie/store';
 import { HomePageFooter, HomePageHeader } from 'pages/Home';
 
 import styles from './HomePage.module.scss';
 
 export function HomePage() {
-  const [movie, setMovie] = useState<Movie | null>(null);
-
-  // Each time when list of movies should be refreshed, counter value is incremented
-  const [moviesAreOutdatedCounter, setMoviesAreOutdatedCounter] = useState(0);
-  const [moviesSearchTerm, setMoviesSearchTerm] = useState<string>('');
-
-  const requestMoviesLoading = () => {
-    setMoviesAreOutdatedCounter((value) => value + 1);
-  };
-
-  const contextData = useMemo(() => ({
-    movie,
-    setMovie,
-    moviesAreOutdatedCounter,
-    requestMoviesLoading,
-  }), [movie, moviesAreOutdatedCounter]);
+  const dispatch = useDispatch();
 
   const handleMoviesSearch = useCallback((searchTerm: string) => {
-    setMoviesSearchTerm(searchTerm);
+    dispatch(searchMovies(searchTerm));
   }, []);
 
   return (
-    <MovieContext.Provider value={contextData}>
+    <>
       <HomePageHeader onMoviesSearch={handleMoviesSearch} />
       <main className={styles['MoviesContainer']}>
-        <MoviesContainer searchTerm={moviesSearchTerm} />
+        <MoviesContainer />
       </main>
       <HomePageFooter />
-    </MovieContext.Provider>
+    </>
   );
 }
