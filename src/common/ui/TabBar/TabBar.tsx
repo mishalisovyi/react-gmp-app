@@ -1,16 +1,18 @@
 import React, { memo, useCallback, useState } from 'react';
 
+import { TabDataItem } from 'common/interfaces';
 import { Tab } from 'common/ui';
+
 import styles from './TabBar.module.scss';
 
 interface TabBarProps {
-  tabs: string[];
+  tabs: TabDataItem[];
   defaultActiveTab: string;
   onActiveTabChanged: (tabLabel: string) => void;
 }
 
-const getDefaultActiveTabIndex = (tabs: string[], defaultActiveTabLabel: string) => {
-  return tabs.findIndex((item) => item === defaultActiveTabLabel);
+const getDefaultActiveTabIndex = (tabs: TabDataItem[], defaultActiveTabLabel: string) => {
+  return tabs.findIndex((item) => item.value === defaultActiveTabLabel);
 };
 
 function TabBarComponent({ tabs, defaultActiveTab, onActiveTabChanged }: TabBarProps) {
@@ -25,11 +27,12 @@ function TabBarComponent({ tabs, defaultActiveTab, onActiveTabChanged }: TabBarP
 
   return (
     <div className={styles['TabBar']}>
-      {tabs.map((label, index) => {
+      {tabs.map((tab, index) => {
         return (
           <Tab
-            label={label}
-            key={label}
+            label={tab.title}
+            value={tab.value}
+            key={tab.value}
             index={index}
             isActive={index === activeTabIndex}
             onClick={handleTabClick}

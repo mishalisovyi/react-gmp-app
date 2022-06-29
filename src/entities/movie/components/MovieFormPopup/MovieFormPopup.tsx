@@ -1,9 +1,12 @@
 import React, { useCallback, useEffect, useRef } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { PopupDialog, Spinner } from 'common/ui';
+import { State } from 'core';
+
 import { MOVIES_GENRES } from 'entities/movie/constants';
-import { useMovies } from 'entities/movie/hooks';
 import { Movie, MovieData } from 'entities/movie/interfaces';
+import { requestAddMovie, requestEditMovie } from 'entities/movie/store';
 
 import styles from './MovieFormPopup.module.scss';
 
@@ -29,7 +32,8 @@ const parseFormDataToMovieData = (formData: any): MovieData => ({
 // TODO: implement form validation within the task related to forms
 
 export function MovieFormPopup({ onClose, movie }: MovieFormPopupProps) {
-  const { addMovie, editMovie, loading } = useMovies();
+  const dispatch = useDispatch();
+  const loading = useSelector((state: State) => state.movies.loading);
 
   const formRef = useRef<HTMLFormElement>(null);
 
@@ -54,15 +58,15 @@ export function MovieFormPopup({ onClose, movie }: MovieFormPopupProps) {
     }
   }, []);
 
-  const handleFormSubmit = useCallback(async () => {
+  const handleFormSubmit = useCallback(() => {
     const formData = new FormData(formRef.current as HTMLFormElement);
     const parsedFormData = Object.fromEntries(formData.entries()) as any;
     const movieData = parseFormDataToMovieData(parsedFormData);
 
-    await (movie ? editMovie(movie.id, movieData) : addMovie(movieData));
+    dispatch(movie ? requestEditMovie({ ...movieData, id: movie.id }) : requestAddMovie(movieData));
 
     onClose({ confirmed: true });
-  }, [formRef, movie, editMovie, addMovie, onClose]);
+  }, [formRef, movie, onClose]);
 
   const handleFormReset = useCallback(() => {
     const formElement = formRef.current;

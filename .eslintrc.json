@@ -28,10 +28,12 @@
     "jsx-a11y/label-has-associated-control": 0,
     "jsx-a11y/no-static-element-interactions": 0,
     "linebreak-style": 0,
+    "max-len": ["error", { "code": 200, "ignoreStrings": true }],
     "react/destructuring-assignment": 0,
     "react/no-array-index-key": 0,
     "react/no-unused-prop-types": 0,
     "react/jsx-props-no-spreading": 0,
+    "@typescript-eslint/default-param-last": 0,
     "@typescript-eslint/dot-notation": 0
   }
 }

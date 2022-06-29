@@ -5,6 +5,10 @@
   display: flex;
   column-gap: 56px;
 
+  &__poster-wrapper {
+    min-width: 320px;
+  }
+
   &__poster {
     width: 320px;
     height: 450px;

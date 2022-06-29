@@ -1,1 +1,0 @@
-export { MovieContext } from './movieContext';
