@@ -108,7 +108,7 @@ img {
     padding: 8px 12px;
     box-sizing: border-box;
     background-color: colors.$black-panther;
-    border: none;
+    border: solid 1px transparent;
     border-radius: 4px;
   }
 
@@ -121,6 +121,7 @@ img {
     @extend .u-hidden;
 
     color: colors.$festive-fennec;
+    min-height: 16px;
   }
 
   &--has-error {
