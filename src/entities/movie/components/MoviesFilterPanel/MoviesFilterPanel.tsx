@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React, { memo, useCallback } from 'react';
 
 import { Divider, FilterSelectList, TabBar } from 'common/ui';
 import { MOVIES_SORTING_SELECT_DATA, MOVIES_TABS_DATA } from 'entities/movie/constants';
@@ -6,35 +6,44 @@ import { MOVIES_SORTING_SELECT_DATA, MOVIES_TABS_DATA } from 'entities/movie/con
 import styles from './MoviesFilterPanel.module.scss';
 
 interface MoviesFilterPanelProps {
+  defaultGenreFilter?: string;
+  defaultSortField?: string;
   onSortingPerformed: (selectedValue: string) => void;
   onGenreFilterApplied: (tabLabel: string) => void;
 }
 
 function MoviesFilterPanelComponent({
+  defaultGenreFilter,
+  defaultSortField,
   onGenreFilterApplied,
   onSortingPerformed,
 }: MoviesFilterPanelProps) {
-  const handleActiveTabChange = (tabLabel: string) => {
+  const handleActiveTabChange = useCallback((tabLabel: string) => {
     onGenreFilterApplied(tabLabel);
-  };
+  }, []);
 
-  const handleFilterSelectionChange = (selectedValue: string) => {
+  const handleFilterSelectionChange = useCallback((selectedValue: string) => {
     onSortingPerformed(selectedValue);
-  };
+  }, []);
 
   return (
     <>
       <div className={styles['MoviesFilterPanel']}>
         <TabBar
           tabs={MOVIES_TABS_DATA.items}
-          defaultActiveTab={MOVIES_TABS_DATA.defaultValue}
+          defaultActiveTab={defaultGenreFilter as string}
           onActiveTabChanged={handleActiveTabChange}
         />
-        <FilterSelectList label="Sort by" options={MOVIES_SORTING_SELECT_DATA.items} defaultValue={MOVIES_SORTING_SELECT_DATA.defaultValue} onSelectionChanged={handleFilterSelectionChange} />
+        <FilterSelectList label="Sort by" options={MOVIES_SORTING_SELECT_DATA.items} defaultValue={defaultSortField as string} onSelectionChanged={handleFilterSelectionChange} />
       </div>
       <Divider />
     </>
   );
 }
+
+MoviesFilterPanelComponent.defaultProps = {
+  defaultGenreFilter: MOVIES_TABS_DATA.defaultValue,
+  defaultSortField: MOVIES_SORTING_SELECT_DATA.defaultValue,
+};
 
 export const MoviesFilterPanel = memo(MoviesFilterPanelComponent);

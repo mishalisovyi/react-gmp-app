@@ -11,7 +11,7 @@ import {
 import * as Yup from 'yup';
 
 import { PopupDialog, Spinner } from 'common/ui';
-import { State } from 'core';
+import { State } from 'core/interfaces';
 
 import { MOVIES_GENRES } from 'entities/movie/constants';
 import { Movie, MovieData } from 'entities/movie/interfaces';
@@ -71,7 +71,7 @@ const MovieFormValidationSchema = Yup.object().shape({
 export function MovieFormPopup({ onClose, movie }: MovieFormPopupProps) {
   const formRef = useRef<FormikProps<FormikValues>>(null);
   const dispatch = useDispatch();
-  const loading = useSelector((state: State) => state.movies.loading);
+  const loading = useSelector((state: State) => state.movies.loadingBasic);
 
   const handlePopupDialogPrimaryButtonClick = () => {
     if (formRef.current) {

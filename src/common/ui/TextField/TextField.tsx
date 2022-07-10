@@ -4,18 +4,20 @@ import styles from './TextField.module.scss';
 
 interface TextFieldProps extends ComponentWithRefProps {
   placeholder?: string,
+  value?: string,
 }
 
 const TextField = forwardRef(
-  ({ placeholder }: TextFieldProps, ref: React.ForwardedRef<HTMLInputElement>) => {
+  ({ placeholder, value }: TextFieldProps, ref: React.ForwardedRef<HTMLInputElement>) => {
     return (
-      <input type="text" ref={ref} placeholder={placeholder} className={styles['TextField']} />
+      <input type="text" ref={ref} defaultValue={value} placeholder={placeholder} className={styles['TextField']} />
     );
   },
 );
 
 TextField.defaultProps = {
   placeholder: '',
+  value: '',
 };
 
 export { TextField };

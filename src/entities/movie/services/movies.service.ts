@@ -22,6 +22,12 @@ export const getMovies = ({
   return sendGetRequest(url);
 };
 
+export const getMovie = (movieId: number): ResponseSimple<Movie> => {
+  const url = `${API_URL}/movies/${movieId}`;
+
+  return sendGetRequest(url);
+};
+
 export const addMovie = (movieData: MovieData): ResponseSimple<Movie> => {
   const url = `${API_URL}/movies`;
 

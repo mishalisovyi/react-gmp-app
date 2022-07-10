@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 import { LabelPrimary } from 'common/ui';
 import { formatMinutesTimeRange } from 'common/util';
@@ -10,7 +10,7 @@ interface MovieDetailsProps {
   movie: Movie;
 }
 
-export function MovieDetails({ movie }: MovieDetailsProps) {
+function MovieDetailsComponent({ movie }: MovieDetailsProps) {
   return (
     <article className={styles['MovieDetails']}>
       <div className={styles['MovieDetails__poster-wrapper']}>
@@ -32,3 +32,5 @@ export function MovieDetails({ movie }: MovieDetailsProps) {
     </article>
   );
 }
+
+export const MovieDetails = memo(MovieDetailsComponent);

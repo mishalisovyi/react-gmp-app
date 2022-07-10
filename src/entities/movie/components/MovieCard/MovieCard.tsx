@@ -1,7 +1,8 @@
-import React, { useCallback, useState } from 'react';
+import React, { memo, useCallback, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { Icon } from 'common/constants';
+import { useRouter } from 'common/hooks';
 import { ButtonType } from 'common/enums';
 import { EnumerableComponentProps } from 'common/interfaces';
 
@@ -21,8 +22,10 @@ interface MovieCardProps extends EnumerableComponentProps {
   movie: Movie;
 }
 
-export function MovieCard({ movie }: MovieCardProps) {
+function MovieCardComponent({ movie }: MovieCardProps) {
   const dispatch = useDispatch();
+
+  const { setQueryParameters } = useRouter();
 
   const [showMenuButton, setShowMenuButton] = useState(false);
   const [showEditMoviePopup, setShowEditMoviePopup] = useState(false);
@@ -39,6 +42,7 @@ export function MovieCard({ movie }: MovieCardProps) {
   };
 
   const handleMovieCardClick = () => {
+    setQueryParameters({ movie: movie.id });
     dispatch(selectMovie(movie));
   };
 
@@ -104,3 +108,5 @@ export function MovieCard({ movie }: MovieCardProps) {
     </>
   );
 }
+
+export const MovieCard = memo(MovieCardComponent);
