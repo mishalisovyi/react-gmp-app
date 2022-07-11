@@ -1,8 +1,18 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import {
+  BrowserRouter,
+  Navigate,
+  Route,
+  Routes,
+} from 'react-router-dom';
 
 import { clearHttpError } from 'common/store/actions';
-import { ErrorBoundary, State } from 'core';
+
+import { ErrorBoundary } from 'core/components';
+import { State } from 'core/interfaces';
+import { NotFoundPage } from 'core/pages';
+
 import { HomePage } from 'pages/Home';
 
 function App() {
@@ -21,7 +31,14 @@ function App() {
 
   return (
     <ErrorBoundary>
-      <HomePage />
+      <BrowserRouter>
+        <Routes>
+          <Route path="search" element={<HomePage />} />
+          <Route path="search/:searchQuery" element={<HomePage />} />
+          <Route path="/" element={<Navigate to="/search" replace />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </BrowserRouter>
     </ErrorBoundary>
   );
 }

@@ -1,6 +1,6 @@
 import { Action } from '@reduxjs/toolkit';
 
-import { Movie, MoviesListRequestParameters } from 'entities/movie/interfaces';
+import { Movie } from 'entities/movie/interfaces';
 
 // Actions types
 
@@ -21,11 +21,10 @@ export enum MoviesAction {
   DeleteMovieFailure = 'DELETE_MOVIE_FAILURE',
 
   SetMovies = 'SET_MOVIES',
-  SetMoviesLoading = 'SET_MOVIES_LOADING',
-  SetMoviesSortField = 'SET_MOVIES_SORT_FIELD',
-  SetMoviesGenreFilter = 'SET_MOVIES_GENRE_FILTER',
-  SetMoviesSearchTerm = 'SET_MOVIES_SEARCH_TERM',
+  SetMoviesBasicLoading = 'SET_MOVIES_BASIC_LOADING',
+  SetSingleMovieLoading = 'SET_SINGLE_MOVIE_LOADING',
   SetSelectedMovie = 'SET_SELECTED_MOVIE',
+  SetMoviesListIsOutdated = 'SET_MOVIES_LIST_IS_OUTDATED',
 }
 
 // Simple actions models
@@ -34,31 +33,28 @@ export interface SetMoviesAction extends Action<MoviesAction.SetMovies> {
   moviesList: Movie[];
 }
 
-export interface SetMoviesLoadingAction extends Action<MoviesAction.SetMoviesLoading> {
-  loading: boolean;
+export interface SetMoviesBasicLoadingAction extends Action<MoviesAction.SetMoviesBasicLoading> {
+  loadingBasic: boolean;
 }
 
-export interface SetMoviesSortFieldAction extends Action<MoviesAction.SetMoviesSortField> {
-  sortField: string;
-}
-
-export interface SetMoviesGenreFilterAction extends Action<MoviesAction.SetMoviesGenreFilter> {
-  genreFilter: string;
-}
-
-export interface SetMoviesSearchTermAction extends Action<MoviesAction.SetMoviesSearchTerm> {
-  searchTerm: string;
+export interface SetSingleMovieLoadingAction extends Action<MoviesAction.SetSingleMovieLoading> {
+  loadingSingleMovie: boolean;
 }
 
 export interface SetSelectedMovieAction extends Action<MoviesAction.SetSelectedMovie> {
   selectedMovie: Movie | null;
 }
 
+export interface SetMoviesListIsOutdatedAction extends Action<MoviesAction.SetMoviesListIsOutdated> {
+  moviesListIsOutdated: boolean;
+}
+
 // State
 
 export interface MoviesState {
   moviesList: Movie[];
-  listRequestParameters: MoviesListRequestParameters;
+  moviesListIsOutdated: boolean;
   selectedMovie: Movie | null;
-  loading: boolean;
+  loadingBasic: boolean;
+  loadingSingleMovie: boolean;
 }

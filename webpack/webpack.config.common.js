@@ -19,6 +19,11 @@ module.exports = {
     path: path.resolve('./dist'),
   },
 
+  performance: {
+    maxAssetSize: 500_000,
+    maxEntrypointSize: 500_000,
+  },
+
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({

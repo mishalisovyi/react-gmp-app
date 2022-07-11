@@ -4,6 +4,10 @@ const common = require('./webpack.config.common');
 module.exports = merge(common, {
   devtool: 'source-map',
 
+  devServer: {
+    historyApiFallback: true,
+  },
+
   module: {
     rules: [{
       test: /\.scss$/,

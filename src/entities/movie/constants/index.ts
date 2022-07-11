@@ -50,7 +50,7 @@ export const MOVIES_TABS_DATA: TabsData = {
 // Sorting
 
 export const MOVIES_SORTING_SELECT_DATA: SelectListData = {
-  defaultValue: 'release_date',
+  defaultValue: 'vote_average',
   items: [{
     title: 'Title',
     value: 'title',
