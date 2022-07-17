@@ -25,7 +25,7 @@ function SearchPanelComponent({ labelText, value, onSearch }: SearchPanelProps) 
   return (
     <>
       {label}
-      <div className={styles['SearchPanel__controls']}>
+      <div className={styles['SearchPanel__controls']} data-test-id="SearchPanel__controls">
         <TextField ref={textFieldRef} value={value} placeholder="What do you want to watch?" />
         <Button type={ButtonType.Primary} text="Search" onClick={handleSearchButtonClick} />
       </div>

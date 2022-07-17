@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render dialog popup 1`] = `
+<div>
+  <div />
+  <div>
+    <div>
+      <button
+        className="button button--transparent"
+        onClick={[MockFunction]}
+        type="button"
+      >
+        ✕
+      </button>
+    </div>
+    <header>
+      test title
+    </header>
+    <div>
+      <div>
+        test
+      </div>
+    </div>
+    <div>
+      <button
+        className="button button--secondary"
+        onClick={[MockFunction]}
+        type="button"
+      >
+        Reset
+      </button>
+      <button
+        className="button button--primary"
+        onClick={[MockFunction]}
+        type="button"
+      >
+        Submit
+      </button>
+    </div>
+  </div>
+</div>
+`;

@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render info popup 1`] = `
+<div>
+  <div />
+  <div>
+    <div>
+      <button
+        className="button button--transparent"
+        onClick={[MockFunction]}
+        type="button"
+      >
+        ✕
+      </button>
+    </div>
+    <div>
+      <div>
+        <div>
+          ✓
+        </div>
+        <h1
+          className="typography-heading"
+        >
+          test title
+        </h1>
+        <p
+          className="typography-body"
+        >
+          test message
+        </p>
+      </div>
+    </div>
+    <div />
+  </div>
+</div>
+`;

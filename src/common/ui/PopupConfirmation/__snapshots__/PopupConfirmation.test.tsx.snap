@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render confirmation popup 1`] = `
+<div>
+  <div />
+  <div>
+    <div>
+      <button
+        className="button button--transparent"
+        onClick={[MockFunction]}
+        type="button"
+      >
+        ✕
+      </button>
+    </div>
+    <header>
+      test title
+    </header>
+    <div>
+      <p
+        className="typography-body"
+      >
+        test message
+      </p>
+    </div>
+    <div>
+      <button
+        className="button button--primary"
+        onClick={[MockFunction]}
+        type="button"
+      >
+        Confirm
+      </button>
+    </div>
+  </div>
+</div>
+`;

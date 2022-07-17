@@ -7,7 +7,7 @@ import {
   Routes,
 } from 'react-router-dom';
 
-import { clearHttpError } from 'common/store/actions';
+import { clearHttpError } from 'common/store';
 
 import { ErrorBoundary } from 'core/components';
 import { State } from 'core/interfaces';

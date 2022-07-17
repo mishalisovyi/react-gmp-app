@@ -1,7 +1,7 @@
 import { AnyAction } from '@reduxjs/toolkit';
 import { CommonAction, CommonState, SetHttpErrorAction } from 'common/store';
 
-const initialState: CommonState = {
+export const initialState: CommonState = {
   httpError: null,
 };
 

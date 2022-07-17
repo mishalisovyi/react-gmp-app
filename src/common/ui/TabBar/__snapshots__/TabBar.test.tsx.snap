@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render tab bar 1`] = `
+<div>
+  <div
+    className="undefined undefined"
+    onClick={[Function]}
+  >
+    Tab 1
+  </div>
+  <div
+    className="undefined "
+    onClick={[Function]}
+  >
+    Tab 2
+  </div>
+</div>
+`;

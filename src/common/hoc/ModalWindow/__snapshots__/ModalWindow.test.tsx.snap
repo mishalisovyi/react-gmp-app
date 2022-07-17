@@ -1,0 +1,102 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render modal window with only primary button 1`] = `
+<div>
+  <div />
+  <div>
+    <div>
+      <button
+        className="button button--transparent"
+        onClick={[MockFunction]}
+        type="button"
+      >
+        ✕
+      </button>
+    </div>
+    <header>
+      test 2
+    </header>
+    <div>
+      <p>
+        test
+      </p>
+    </div>
+    <div>
+      <button
+        className="button button--primary"
+        onClick={[MockFunction]}
+        type="button"
+      >
+        Submit
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`should render modal window with primary and secondary buttons 1`] = `
+<div>
+  <div />
+  <div>
+    <div>
+      <button
+        className="button button--transparent"
+        onClick={[MockFunction]}
+        type="button"
+      >
+        ✕
+      </button>
+    </div>
+    <header>
+      test 3
+    </header>
+    <div>
+      <p>
+        test
+      </p>
+    </div>
+    <div>
+      <button
+        className="button button--secondary"
+        onClick={[MockFunction]}
+        type="button"
+      >
+        Reset
+      </button>
+      <button
+        className="button button--primary"
+        onClick={[MockFunction]}
+        type="button"
+      >
+        Submit
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`should render modal window without buttons 1`] = `
+<div>
+  <div />
+  <div>
+    <div>
+      <button
+        className="button button--transparent"
+        onClick={[MockFunction]}
+        type="button"
+      >
+        ✕
+      </button>
+    </div>
+    <header>
+      test 1
+    </header>
+    <div>
+      <p>
+        test
+      </p>
+    </div>
+    <div />
+  </div>
+</div>
+`;

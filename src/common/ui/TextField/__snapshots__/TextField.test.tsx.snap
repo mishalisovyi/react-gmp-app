@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render text field 1`] = `
+<input
+  defaultValue="test value"
+  placeholder="test placeholder"
+  type="text"
+/>
+`;
