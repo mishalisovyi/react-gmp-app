@@ -1,6 +1,6 @@
 import { AnyAction, ThunkDispatch } from '@reduxjs/toolkit';
 
-import { setHttpError } from 'common/store/actions';
+import { setHttpError } from 'common/store';
 import { Movie, MovieData, MoviesListRequestParameters } from 'entities/movie/interfaces';
 
 import {

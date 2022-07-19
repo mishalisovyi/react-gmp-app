@@ -85,7 +85,7 @@ function MovieCardComponent({ movie }: MovieCardProps) {
           <img className={styles['MovieCard__poster']} src={movie.poster_path} alt={movie.title} />
           <div className={styles['MovieCard__info']}>
             <div className={styles['info__summary']}>
-              <div className={styles['info__title']}>{movie.title}</div>
+              <div className={styles['info__title']} data-test-id="MovieCard__info__title">{movie.title}</div>
               <div className={styles['info__tagline']}>{movie.tagline}</div>
             </div>
             <LabelSecondary value={new Date(movie.release_date).getFullYear()} />

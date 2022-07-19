@@ -16,7 +16,7 @@ function MoviesDashboardComponent({ movies }: MoviesDashboardProps) {
         <span className="typography-body-semibold">{movies.length}</span>
         <span className="typography-body"> movies found</span>
       </div>
-      <div className={styles['MoviesDashboard__items-grid']}>
+      <div className={styles['MoviesDashboard__items-grid']} data-test-id="MoviesDashboard__items-grid">
         {movies.map((movie) => <MovieCard key={movie.id} movie={movie} />)}
       </div>
     </>

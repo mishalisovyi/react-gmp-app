@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render search panel 1`] = `
+Array [
+  <h1
+    className="typography-heading"
+  >
+    test label
+  </h1>,
+  <div>
+    <input
+      defaultValue="test value"
+      placeholder="What do you want to watch?"
+      type="text"
+    />
+    <button
+      className="button button--primary"
+      onClick={[Function]}
+      type="button"
+    >
+      Search
+    </button>
+  </div>,
+]
+`;

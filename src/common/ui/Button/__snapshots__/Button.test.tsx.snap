@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render menu button 1`] = `
+<button
+  className="button button--menu"
+  onClick={[Function]}
+  type="button"
+>
+  menu button
+</button>
+`;
+
+exports[`should render primary button 1`] = `
+<button
+  className="button button--primary"
+  onClick={[Function]}
+  type="button"
+>
+  primary button
+</button>
+`;
+
+exports[`should render search button 1`] = `
+<button
+  className="button button--search"
+  onClick={[Function]}
+  type="button"
+>
+  search button
+</button>
+`;
+
+exports[`should render secondary button 1`] = `
+<button
+  className="button button--secondary"
+  onClick={[Function]}
+  type="button"
+>
+  secondary button
+</button>
+`;
+
+exports[`should render tertiary button 1`] = `
+<button
+  className="button button--small button--tertiary"
+  onClick={[Function]}
+  type="button"
+>
+  tertiary button
+</button>
+`;
+
+exports[`should render transparent button 1`] = `
+<button
+  className="button button--transparent"
+  onClick={[Function]}
+  type="button"
+>
+  transparent button
+</button>
+`;

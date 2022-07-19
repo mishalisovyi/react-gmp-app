@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render dropdown menu target element 1`] = `
+<div
+  onClick={[Function]}
+>
+  <div>
+    menu target
+  </div>
+</div>
+`;

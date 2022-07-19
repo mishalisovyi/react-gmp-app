@@ -12,7 +12,7 @@ interface MovieDetailsProps {
 
 function MovieDetailsComponent({ movie }: MovieDetailsProps) {
   return (
-    <article className={styles['MovieDetails']}>
+    <article className={styles['MovieDetails']} data-test-id="MovieDetails">
       <div className={styles['MovieDetails__poster-wrapper']}>
         <img className={styles['MovieDetails__poster']} src={movie.poster_path} alt={movie.title} />
       </div>

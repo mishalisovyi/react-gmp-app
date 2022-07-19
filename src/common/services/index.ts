@@ -3,4 +3,4 @@ export {
   sendPostRequest,
   sendPutRequest,
   sendDeleteRequest,
-} from './http.service';
+} from './http/http.service';
